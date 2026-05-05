@@ -1,0 +1,117 @@
+:root {
+  --bg-primary: #0f1217;
+  --bg-secondary: #181d26;
+  --bg-tertiary: #222a36;
+  --bg-input: #0f1217;
+
+  --text-primary: #f0ede8;
+  --text-secondary: #cdc9c0;
+  --text-muted: #6f6b60;
+
+  --color-primary: #f5a623;
+  --color-primary-dark: #e0951a;
+  --color-secondary: #ff8744;
+
+  --border-color: #3a3f4a;
+  --btn-secondary-bg: #252e3b;
+  --btn-secondary-hover: #354153;
+
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .contato-wrapper {
+    padding: 1.5rem;
+    /* reduz o espaçamento interno */
+  }
+
+  .contato-form input,
+  .contato-form textarea {
+    width: 100%;
+    /* força os campos a ocuparem toda a largura */
+    box-sizing: border-box;
+    /* garante que padding não aumente a largura */
+  }
+
+  .contato-form button {
+    width: 100%;
+    /* botão também ocupa toda largura em mobile */
+  }
+
+  .contato-info p {
+    word-break: break-word;
+    /* quebra textos longos (e-mail, telefone) */
+    overflow-wrap: break-word;
+  }
+
+  /* opcional: ajusta os links sociais dentro do contato-info */
+  .contato-info .social-links {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .hero-grid,
+  .sobre-grid,
+  .contato-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-texto h1 {
+    font-size: 2.2rem;
+  }
+
+  .avatar-placeholder {
+    width: 200px;
+    height: 200px;
+  }
+
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-canvas {
+    display: none;
+  }
+
+  .avatar-placeholder {
+    animation: none;
+    box-shadow: 0 0 0 3px rgba(255, 174, 0, 0.7);
+  }
+
+  .skill-progress {
+    transition: none;
+  }
+}

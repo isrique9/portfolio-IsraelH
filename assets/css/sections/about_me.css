@@ -1,0 +1,150 @@
+.highlight-phrase {
+  background: rgba(245, 166, 35, 0.08);
+  border-left: 4px solid var(--color-primary);
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 0 1rem 1rem 0;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.highlight-phrase i {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+}
+
+#typewriter-text {
+  display: inline-block;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  background-color: var(--color-primary);
+  animation: blink 0.7s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.soft-skills {
+  margin-top: 1.5rem;
+  background: var(--bg-tertiary);
+  padding: 1.2rem;
+  border-radius: 1rem;
+}
+
+.soft-skills h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.skill-item {
+  margin-bottom: 1rem;
+}
+
+.skill-item span {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.skill-bar {
+  background: var(--bg-secondary);
+  height: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 10px;
+  transition: width 1s ease-out;
+}
+
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.sobre-texto p {
+  margin-bottom: 1rem;
+}
+
+.dado-item {
+  background: var(--bg-tertiary);
+  padding: 1rem 1.2rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  user-select: none;
+}
+
+.dado-item i {
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  min-width: 2rem;
+  text-align: center;
+}
+
+.dado-item:hover {
+  transform: translateX(6px);
+  background: #2a3545;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hover-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.15), transparent);
+  transition: left 0.5s;
+}
+
+.dado-item:hover .hover-glow {
+  left: 100%;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}

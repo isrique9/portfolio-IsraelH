@@ -1,0 +1,9 @@
+/* assets/css/sections/main.css */
+
+@import url('about_me.css');
+@import url('contact.css');
+@import url('edu.css');
+@import url('exp.css');
+@import url('hero.css');
+@import url('projects.css');
+@import url('tech.css');
