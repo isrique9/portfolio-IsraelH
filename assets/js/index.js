@@ -11,17 +11,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Exemplo de alerta para o formulário (sem backend real)
-const form = document.querySelector('.contato-form');
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Mensagem enviada (demo). Em breve responderei!');
-    form.reset();
-  });
-}
-
-// Logo leva ao topo da página
+// Logo leva ao topo
 const logo = document.querySelector('.logo');
 if (logo) {
   logo.addEventListener('click', () => {
@@ -29,7 +19,7 @@ if (logo) {
   });
 }
 
-// ---------- FUNDO ANIMADO COM PARTÍCULAS (CANVAS) ----------
+// FUNDO ANIMADO COM PARTÍCULAS
 (function initAnimatedBackground() {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
@@ -140,7 +130,7 @@ if (logo) {
   window.addEventListener('beforeunload', () => animationId && cancelAnimationFrame(animationId));
 })();
 
-// ---------- EFEITOS EXCLUSIVOS PARA SEÇÃO "SOBRE" ----------
+// Efeitos da seção Sobre
 document.addEventListener('DOMContentLoaded', () => {
   // Typewriter
   const typewriterElement = document.getElementById('typewriter-text');
@@ -184,31 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
     typeEffect();
   }
 
-  // Contador animado para os 10 meses da Amazônia
-  const counterElement = document.getElementById('amazon-counter');
-  if (counterElement) {
-    const observerCounter = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          let count = 0;
-          const target = 10;
-          const step = 1;
-          const interval = setInterval(() => {
-            if (count >= target) {
-              clearInterval(interval);
-              counterElement.textContent = target;
-            } else {
-              count += step;
-              counterElement.textContent = count;
-            }
-          }, 70);
-          observerCounter.disconnect();
-        }
-      });
-    }, { threshold: 0.5 });
-    observerCounter.observe(counterElement);
-  }
-
   // Reveal on scroll e animação das barras de progresso
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
   const skillBars = document.querySelectorAll('.skill-progress');
@@ -237,33 +202,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   skillBars.forEach(bar => observerSkills.observe(bar));
 
-  // Transição de entrada para a primeira seção (hero)
+  // Animação de entrada do Hero
   function animateHeroOnLoad() {
     const heroText = document.querySelector('.hero-texto');
     const heroAvatar = document.querySelector('.hero-avatar');
-
     if (heroText && heroAvatar) {
-      // Adiciona as classes que disparam a transição
       heroText.classList.add('hero-visible');
       heroAvatar.classList.add('hero-visible');
     }
   }
-
-  // Aguarda um pequeno frame para garantir que o layout já está pronto
   setTimeout(animateHeroOnLoad, 100);
-
 });
 
-// ANIMAÇÃO DE SLIDE NA EXPERIÊNCIA (com stagger nos itens)
+// Animação do card de experiência (slide + stagger)
 const expCard = document.querySelector('.exp-card');
 if (expCard) {
-  // Atribui ordem a cada item da lista para o delay progressivo
   const listItems = expCard.querySelectorAll('li');
   listItems.forEach((item, idx) => {
     item.style.setProperty('--item-order', idx);
   });
-
-  // Observer específico para o card de experiência
   const expObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -272,21 +229,194 @@ if (expCard) {
       }
     });
   }, { threshold: 0.3 });
-
   expObserver.observe(expCard);
 }
 
-// ANIMAÇÃO DA SEÇÃO PROJETOS (fade + slide com stagger)
+// Animação dos projetos
 const projetosGrid = document.querySelector('.projetos-grid');
 if (projetosGrid) {
   const observerProjetos = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         projetosGrid.classList.add('animated');
-        observerProjetos.unobserve(projetosGrid); // executa só uma vez
+        observerProjetos.unobserve(projetosGrid);
       }
     });
-  }, { threshold: 0.25 }); // ativa quando 25% da grid estiver visível
-
+  }, { threshold: 0.25 });
   observerProjetos.observe(projetosGrid);
+}
+
+// --------------------------------------------------------------
+// ENVIO DE E-MAIL COM EMAILJS + VALIDAÇÕES AVANÇADAS
+// --------------------------------------------------------------
+
+// Funções auxiliares
+function isValidEmail(email) {
+  const re = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+  return re.test(email);
+}
+
+function sanitizeInput(str) {
+  if (!str) return '';
+  return str.replace(/<[^>]*>?/gm, '').trim();
+}
+
+// Rate limit (1 minuto)
+function isRateLimited() {
+  const lastSent = localStorage.getItem('lastContactSend');
+  if (!lastSent) return false;
+  const now = Date.now();
+  const diff = now - parseInt(lastSent);
+  return diff < 60000;
+}
+
+function setRateLimit() {
+  localStorage.setItem('lastContactSend', Date.now().toString());
+}
+
+// Inicializa o EmailJS
+(function initEmailJS() {
+  emailjs.init({
+    publicKey: "iLmTQfHcn50JpUOs4",
+  });
+})();
+
+const form = document.querySelector('.contato-form');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // HONEYPOT
+    const honeypot = form.querySelector('input[name="honeypot"]');
+    if (honeypot && honeypot.value.trim() !== "") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro no envio',
+        text: 'Mensagem não enviada. Tente novamente.',
+        background: '#181d26',
+        color: '#f0ede8',
+        confirmButtonColor: '#f5a623'
+      });
+      return;
+    }
+
+    const nameInput = form.querySelector('input[placeholder="Seu nome"]');
+    const emailInput = form.querySelector('input[placeholder="Seu e-mail"]');
+    const msgInput = form.querySelector('textarea');
+
+    let name = nameInput ? nameInput.value : '';
+    let email = emailInput ? emailInput.value : '';
+    let message = msgInput ? msgInput.value : '';
+
+    name = sanitizeInput(name);
+    email = sanitizeInput(email);
+    message = sanitizeInput(message);
+
+    if (!name || !email || !message) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos incompletos',
+        text: 'Por favor, preencha todos os campos.',
+        background: '#181d26',
+        color: '#f0ede8',
+        confirmButtonColor: '#f5a623'
+      });
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'E-mail inválido',
+        text: 'Digite um endereço de e-mail válido (exemplo@dominio.com).',
+        background: '#181d26',
+        color: '#f0ede8',
+        confirmButtonColor: '#f5a623'
+      });
+      return;
+    }
+
+    if (name.length > 100) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Nome muito longo',
+        text: 'O nome deve ter no máximo 100 caracteres.',
+        background: '#181d26',
+        color: '#f0ede8',
+        confirmButtonColor: '#f5a623'
+      });
+      return;
+    }
+
+    if (message.length > 2000) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Mensagem muito longa',
+        text: 'A mensagem pode ter no máximo 2000 caracteres.',
+        background: '#181d26',
+        color: '#f0ede8',
+        confirmButtonColor: '#f5a623'
+      });
+      return;
+    }
+
+    if (isRateLimited()) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Aguarde um momento',
+        text: 'Você já enviou uma mensagem há menos de 1 minuto. Tente novamente em alguns instantes.',
+        background: '#181d26',
+        color: '#f0ede8',
+        confirmButtonColor: '#f5a623'
+      });
+      return;
+    }
+
+    const templateParams = { name, email, message };
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.disabled = true;
+
+    try {
+      await emailjs.send("service_4v39ihm", "template_zybw4nm", templateParams);
+      setRateLimit();
+      Swal.fire({
+        icon: 'success',
+        title: 'Mensagem enviada!',
+        text: 'Em breve entrarei em contato.',
+        background: '#181d26',
+        color: '#f0ede8',
+        confirmButtonColor: '#f5a623'
+      });
+      form.reset();
+    } catch (error) {
+      console.error('Erro ao enviar:', error);
+
+      // 🚨 TRATAMENTO ESPECÍFICO PARA ERRO 429 (COTA EXCEDIDA)
+      if (error.status === 429 || (error.text && error.text.includes('Too Many Requests'))) {
+        Swal.fire({
+          icon: 'info',
+          title: 'Limite temporário atingido',
+          html: 'O serviço de e-mails atingiu seu limite mensal de mensagens.<br><br>⚠️ Isso é uma restrição do servidor, não um problema com seus dados.<br><br>O limite será renovado automaticamente no início do próximo mês. Tente novamente mais tarde.',
+          background: '#181d26',
+          color: '#f0ede8',
+          confirmButtonColor: '#f5a623'
+        });
+      } else {
+        // Qualquer outro erro (rede, template inválido, etc.)
+        Swal.fire({
+          icon: 'error',
+          title: 'Falha no envio',
+          text: 'Não foi possível enviar sua mensagem. Tente novamente mais tarde.',
+          background: '#181d26',
+          color: '#f0ede8',
+          confirmButtonColor: '#f5a623'
+        });
+      }
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  });
 }

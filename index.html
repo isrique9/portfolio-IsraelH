@@ -12,6 +12,9 @@
     href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Poppins:wght@500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -31,10 +34,9 @@
   </header>
 
   <main>
-    <!-- SEÇÃO HOME com fundo animado (canvas) -->
+    <!-- SEÇÃO HOME com fundo animado -->
     <section id="home" class="hero">
       <canvas id="heroCanvas" class="hero-canvas"></canvas>
-
       <div class="container hero-grid">
         <div class="hero-texto">
           <span class="badge">Front-end Developer</span>
@@ -63,7 +65,7 @@
       </div>
     </section>
 
-    <!-- SEÇÃO SOBRE (REFORMULADA COM MAIS VIDA) -->
+    <!-- SEÇÃO SOBRE (menos ênfase no voluntariado) -->
     <section id="sobre" class="sobre">
       <div class="container">
         <h2 class="section-title">
@@ -71,7 +73,6 @@
           <div class="title-underline"></div>
         </h2>
 
-        <!-- Frase de destaque com efeito typewriter -->
         <div class="highlight-phrase">
           <i class="fas fa-quote-left"></i>
           <span id="typewriter-text"></span>
@@ -84,11 +85,6 @@
               <strong>Tecnologia em Sistemas de Informação</strong> na UNORTE (conclusão em 2028) e tenho formação
               técnica em Administração pela ETEC.
             </p>
-            <p>Além da programação, vivi uma experiência transformadora de <strong>10 meses na Amazônia</strong> como
-              intérprete voluntário, o que me deu resiliência, fluência prática em inglês/espanhol e habilidade de
-              trabalhar sob pressão em comunidades ribeirinhas.</p>
-
-            <!-- Soft skills animadas com barras de progresso -->
             <div class="soft-skills">
               <h3>Soft skills <i class="fas fa-chart-line"></i></h3>
               <div class="skill-item">
@@ -131,7 +127,7 @@
             </div>
             <div class="dado-item">
               <i class="fas fa-heart"></i>
-              <span>Voluntariado, jogos, UI/UX</span>
+              <span>UI/UX, jogos, código limpo</span>
               <div class="hover-glow"></div>
             </div>
           </div>
@@ -163,17 +159,16 @@
               <span><i class="fab fa-python"></i> Python</span>
               <span>Flask</span>
               <span>FastAPI</span>
-              <span>StreamLite</span>
-              <span>C#</span>
-              <span>.NET</span>
-              <span><i class="fab fa-git-alt"></i> Git/GitHub</span>
+              <span>Streamlit</span>
+              <span>C# / .NET</span>
+              <span><i class="fab fa-git-alt"></i> Git/GitHub <i class="fa-solid fa-angle-right"></i></span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJETOS -->
+    <!-- PROJETOS EM DESTAQUE -->
     <section id="projetos" class="projetos">
       <div class="container">
         <h2 class="section-title">
@@ -181,72 +176,71 @@
           <div class="title-underline"></div>
         </h2>
         <div class="projetos-grid">
-          <!-- 1 - Pokedex -->
           <div class="card-projeto">
             <div class="project-image">
-              <img src="assets/img/projects/pokemon.png" alt="Pokedex Interativa - screenshot" class="project-thumb">
+              <img src="assets/img/projects/pokemon.png" alt="Pokedex Interativa" class="project-thumb">
             </div>
             <h3><i class="fas fa-gamepad"></i> Pokedex Interativa</h3>
             <div class="card-tech">Vue.js · localStorage · API REST</div>
             <p>Escolha 3 pokémons, monte seu time e batalhe contra um oponente aleatório – sistema de vantagens por
               tipo.</p>
             <div class="card-links">
-              <a href="https://isrique9.github.io/Pokedex_App/" target="_blank">Live →</a>
-              <a href="https://github.com/isrique9/pokeapp" target="_blank">GitHub</a>
+              <a href="https://isrique9.github.io/Pokedex_App/" target="_blank">Live <i
+                  class="fa-solid fa-angle-right"></i></a>
+              <a href="https://github.com/isrique9/pokedex-app" target="_blank">GitHub <i
+                  class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
-          <!-- 2 - Clima Agora -->
           <div class="card-projeto">
             <div class="project-image">
-              <img src="assets/img/projects/clima_bom.png" alt="Clima Agora - previsão interativa"
-                class="project-thumb">
+              <img src="assets/img/projects/clima_bom.png" alt="Clima Agora" class="project-thumb">
             </div>
             <h3><i class="fa-solid fa-cloud-sun"></i> Clima Agora</h3>
             <div class="card-tech">Vue.js · Vite · Chart.js · Leaflet</div>
-            <p>Aplicativo web de clima interativo, com dados em tempo real, gráficos, mapa e efeitos visuais dinâmicos,
-              feito em Vue 3.</p>
+            <p>App de clima interativo, com dados em tempo real, gráficos, mapa e efeitos visuais dinâmicos.</p>
             <div class="card-links">
-              <a href="https://isrique9.github.io/weather-explorer-app/" target="_blank">Live →</a>
-              <a href="https://github.com/isrique9/weather-explorer" target="_blank">GitHub</a>
+              <a href="https://isrique9.github.io/weather-explorer-app/" target="_blank">Live <i
+                  class="fa-solid fa-angle-right"></i></a>
+              <a href="https://github.com/isrique9/weather-explorer" target="_blank">GitHub <i
+                  class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
-          <!-- 3 - Lista de Filmes -->
           <div class="card-projeto">
             <div class="project-image">
-              <img src="assets/img/projects/lista_filmes.png" alt="Lista de Filmes - watchlist" class="project-thumb">
+              <img src="assets/img/projects/lista_filmes.png" alt="Lista de Filmes" class="project-thumb">
             </div>
             <h3><i class="fas fa-film"></i> Lista de Filmes</h3>
             <div class="card-tech">Vue 3 · Vite · LocalStorage</div>
             <p>Watchlist para favoritar filmes, com persistência e roteamento simples.</p>
             <div class="card-links">
-              <a href="https://isrique9.github.io/lista-de-filmes/#/" target="_blank">Live →</a>
-              <a href="https://github.com/isrique9/lista-de-films" target="_blank">GitHub</a>
+              <a href="https://isrique9.github.io/lista-de-filmes/#/" target="_blank">Live <i
+                  class="fa-solid fa-angle-right"></i></a>
+              <a href="https://github.com/isrique9/lista-de-filmes" target="_blank">GitHub <i
+                  class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
-          <!-- 4 - EcoDelivery -->
           <div class="card-projeto">
             <div class="project-image">
-              <img src="assets/img/projects/eco_delivery.png" alt="EcoDelivery - conceito sustentável"
-                class="project-thumb">
+              <img src="assets/img/projects/eco_delivery.png" alt="EcoDelivery" class="project-thumb">
             </div>
             <h3><i class="fas fa-leaf"></i> EcoDelivery</h3>
             <div class="card-tech">Figma · UX/UI · Design Psychology</div>
             <p>App conceito para delivery sustentável, com foco em usabilidade e psicologia das cores.</p>
             <div class="card-links">
               <a href="https://www.figma.com/design/oihM4ka4a1v8VDWN7uiMFN/EcoDelivey?t=AS3TganA66dxSPNV-0"
-                target="_blank">Figma →</a>
+                target="_blank">Figma <i class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
-          <!-- 5 - Smart Cajamar -->
           <div class="card-projeto">
             <div class="project-image">
-              <img src="assets/img/projects/smart_cajamar.png" alt="Landing Page Smart Cajamar" class="project-thumb">
+              <img src="assets/img/projects/smart_cajamar.png" alt="Smart Cajamar" class="project-thumb">
             </div>
             <h3><i class="fa-solid fa-city"></i> Landing Page Smart Cajamar</h3>
             <div class="card-tech">PHP · HTML5 · CSS3 · JavaScript</div>
-            <p>Landing Page oficial do programa, promovendo transparência e engajamento comunitário no sistema.</p>
+            <p>Landing Page oficial do programa, promovendo transparência e engajamento comunitário.</p>
             <div class="card-links">
-              <a href="https://smart.cajamar.sp.gov.br/" target="_blank">Live →</a>
+              <a href="https://smart.cajamar.sp.gov.br/" target="_blank">Live <i
+                  class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
         </div>
@@ -257,46 +251,50 @@
     <section class="experiencia">
       <div class="container">
         <h2 class="section-title">
-          Experiência
+          Experiência profissional
           <div class="title-underline"></div>
         </h2>
         <div class="exp-card">
           <h3>Front-end Developer · Prefeitura Municipal de Cajamar (A2W Tecnologia)</h3>
           <span class="exp-data">03/2025 – Presente</span>
           <ul>
-            <li>Desenvolvi dashboard de votação (Streamlit) para o evento "Degusta Cajamar" com atualização em tempo
-              real.</li>
-            <li>Criei sistema de adoção de pets com Flask + Flask WTF integrado a ONGs locais.</li>
-            <li>Implementei painel administrativo para piscinas públicas (PHP) com exportação PDF e impressão de
-              carteirinhas.</li>
-            <li>Refatorei a página "Smart Cajamar" com efeitos visuais modernos e formulário de adesão.</li>
-            <li>Construí formulário de isenção IPTU com Vue.js e interface de votação online para o IPSSC (FastAPI +
-              Jinja2).</li>
+            <li>Dashboard de votação (Streamlit) para o evento "Degusta Cajamar" com atualização em tempo real.</li>
+            <li>Sistema de adoção de pets com Flask + Flask WTF integrado a ONGs locais.</li>
+            <li>Painel administrativo para piscinas públicas (PHP) com exportação PDF e impressão de carteirinhas.</li>
+            <li>Refatoração da página "Smart Cajamar" com efeitos visuais modernos e formulário de adesão.</li>
+            <li>Formulário de isenção IPTU com Vue.js e interface de votação online para o IPSSC (FastAPI + Jinja2).
+            </li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- VOLUNTARIADO -->
-    <section class="voluntariado">
+    <!-- EDUCAÇÃO -->
+    <section class="educacao">
       <div class="container">
         <h2 class="section-title">
-          Voluntariado & Impacto
+          Formação acadêmica
           <div class="title-underline"></div>
         </h2>
-        <div class="vol-grid">
-          <div class="vol-card">
-            <i class="fas fa-tree"></i>
-            <h3>Intérprete · Instituto de Missões Noroeste</h3>
-            <p>Amazonas (Rio Puraquequara) – 10 meses traduzindo para equipes estrangeiras em aldeias e comunidades
-              ribeirinhas. Imersão total que elevou meu inglês/espanhol ao nível avançado prático.</p>
-          </div>
-          <div class="vol-card">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <h3>Professor de Inglês/Espanhol</h3>
-            <p>Igreja Adventista de Jordanésia – Aulas gratuitas focadas em comunicação oral e métodos visuais para
-              comunidade local.</p>
-          </div>
+        <div class="edu-card-single">
+          <ul>
+            <li>
+              <i class="fas fa-graduation-cap"></i>
+              <div>
+                <strong>Tecnologia em Sistemas de Informação</strong><br>
+                UNORTE - Centro Universitário do Norte de São Paulo<br>
+                <span>02/2026 – 02/2028 (Previsão)</span>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-school"></i>
+              <div>
+                <strong>Técnico em Administração</strong><br>
+                ETEC Gino Rezaghi<br>
+                <span>02/2021 – 12/2023 (Concluído)</span>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -315,10 +313,12 @@
             <div class="social-links">
               <a href="https://www.linkedin.com/in/israel-henrique-068a33334" target="_blank"><i
                   class="fab fa-linkedin"></i> LinkedIn</a>
-              <a href="https://github.com/isrique9" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+              <a href="https://github.com/isrique9" target="_blank"><i class="fab fa-github"></i> GitHub <i
+                  class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
           <form action="#" method="post" class="contato-form">
+            <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
             <input type="text" placeholder="Seu nome" required>
             <input type="email" placeholder="Seu e-mail" required>
             <textarea rows="4" placeholder="Sua mensagem"></textarea>
