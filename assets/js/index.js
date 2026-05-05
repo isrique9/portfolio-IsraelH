@@ -20,3 +20,11 @@ if (form) {
     form.reset();
   });
 }
+
+// Logo leva ao topo da página
+const logo = document.querySelector('.logo');
+if (logo) {
+  logo.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}

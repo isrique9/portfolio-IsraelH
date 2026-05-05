@@ -41,6 +41,7 @@ header {
   font-weight: 700;
   font-family: 'Poppins', sans-serif;
   color: #7aa2f7;
+  cursor: pointer;
 }
 
 .logo .destaque {
@@ -106,6 +107,7 @@ nav a:hover {
   color: #bb9af7;
   display: inline-block;
   margin-bottom: 1rem;
+  user-select: none;
 }
 
 .hero-texto h1 {
@@ -186,6 +188,17 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: borderPulse 2s infinite alternate;
+}
+
+@keyframes borderPulse {
+  0% {
+    box-shadow: 0 0 0 3px rgba(122, 162, 247, 0.7), 0 0 10px rgba(122, 162, 247, 0.3);
+  }
+
+  100% {
+    box-shadow: 0 0 0 3px rgba(187, 154, 247, 0.9), 0 0 20px rgba(187, 154, 247, 0.7);
+  }
 }
 
 .avatar-placeholder img {
@@ -227,6 +240,7 @@ nav a:hover {
   border-radius: 1rem;
   margin-bottom: 1rem;
   font-size: 0.9rem;
+  user-select: none;
 }
 
 /* Tech Stack */
@@ -249,6 +263,12 @@ nav a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+
+.tech-icons span:hover {
+  transform: translateY(-2px);
 }
 
 /* Projetos */
