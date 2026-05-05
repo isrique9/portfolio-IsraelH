@@ -42,52 +42,26 @@ body {
 @media (max-width: 768px) {
   .contato-wrapper {
     padding: 1.5rem;
-    /* reduz o espaçamento interno */
   }
 
   .contato-form input,
   .contato-form textarea {
     width: 100%;
-    /* força os campos a ocuparem toda a largura */
     box-sizing: border-box;
-    /* garante que padding não aumente a largura */
   }
 
   .contato-form button {
     width: 100%;
-    /* botão também ocupa toda largura em mobile */
   }
 
   .contato-info p {
     word-break: break-word;
-    /* quebra textos longos (e-mail, telefone) */
     overflow-wrap: break-word;
   }
 
-  /* opcional: ajusta os links sociais dentro do contato-info */
   .contato-info .social-links {
     flex-wrap: wrap;
     gap: 0.8rem;
-  }
-
-  .hero-grid,
-  .sobre-grid,
-  .contato-wrapper {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-texto h1 {
-    font-size: 2.2rem;
-  }
-
-  .avatar-placeholder {
-    width: 200px;
-    height: 200px;
-  }
-
-  .header-container {
-    flex-direction: column;
-    gap: 1rem;
   }
 
   nav ul {

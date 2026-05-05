@@ -159,3 +159,42 @@
   object-fit: cover;
   border-radius: 50%;
 }
+
+/* ========== RESPONSIVO: MOBILE ========== */
+@media (max-width: 768px) {
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero-avatar {
+    order: 1;
+    margin-bottom: 0;
+  }
+
+  .hero-texto {
+    order: 2;
+  }
+
+  .hero-botoes,
+  .social-links {
+    justify-content: center;
+  }
+
+  /* Mantém grid para outras seções */
+  .sobre-grid,
+  .contato-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-texto h1 {
+    font-size: 2.2rem;
+  }
+
+  .avatar-placeholder {
+    width: 200px;
+    height: 200px;
+  }
+}
