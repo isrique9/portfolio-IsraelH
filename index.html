@@ -6,15 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Israel Henrique · Front-end Developer</title>
   <link rel="stylesheet" href="assets/css/style.css">
-
   <link rel="shortcut icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231f4a6c'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'%3EIH%3C/text%3E%3C/svg%3E">
-
-  <!-- Fontes modernas -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Poppins:wght@500;600;700&display=swap"
     rel="stylesheet">
-  <!-- Font Awesome 6 (ícones gratuitos) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -35,8 +31,10 @@
   </header>
 
   <main>
-    <!-- SEÇÃO HOME -->
+    <!-- SEÇÃO HOME com fundo animado (canvas) -->
     <section id="home" class="hero">
+      <canvas id="heroCanvas" class="hero-canvas"></canvas>
+
       <div class="container hero-grid">
         <div class="hero-texto">
           <span class="badge">Front-end Developer</span>
@@ -65,12 +63,23 @@
       </div>
     </section>
 
-    <!-- SEÇÃO SOBRE -->
+    <!-- SEÇÃO SOBRE (REFORMULADA COM MAIS VIDA) -->
     <section id="sobre" class="sobre">
       <div class="container">
-        <h2 class="section-title">Sobre mim</h2>
+        <h2 class="section-title">
+          <span>Sobre mim</span>
+          <div class="title-underline"></div>
+        </h2>
+
+        <!-- Frase de destaque com efeito typewriter -->
+        <div class="highlight-phrase">
+          <i class="fas fa-quote-left"></i>
+          <span id="typewriter-text"></span>
+          <span class="cursor">|</span>
+        </div>
+
         <div class="sobre-grid">
-          <div class="sobre-texto">
+          <div class="sobre-texto reveal-on-scroll">
             <p>Sou desenvolvedor front-end com paixão por <strong>tecnologia e design</strong>. Atualmente curso
               <strong>Tecnologia em Sistemas de Informação</strong> na UNORTE (conclusão em 2028) e tenho formação
               técnica em Administração pela ETEC.
@@ -78,15 +87,53 @@
             <p>Além da programação, vivi uma experiência transformadora de <strong>10 meses na Amazônia</strong> como
               intérprete voluntário, o que me deu resiliência, fluência prática em inglês/espanhol e habilidade de
               trabalhar sob pressão em comunidades ribeirinhas.</p>
-            <p><strong>Diferenciais:</strong> comunicação intercultural, facilidade para aprender e
-              entrega de valor real.</p>
-          </div>
-          <div class="sobre-dados">
-            <div class="dado-item"><i class="fas fa-map-marker-alt"></i> Cajamar - SP
+
+            <!-- Soft skills animadas com barras de progresso -->
+            <div class="soft-skills">
+              <h3>Soft skills <i class="fas fa-chart-line"></i></h3>
+              <div class="skill-item">
+                <span>Adaptabilidade</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="95"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Resiliência / Trabalho sob pressão</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Aprendizado rápido</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="92"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Trabalho em equipe</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="88"></div>
+                </div>
+              </div>
             </div>
-            <div class="dado-item"><i class="fas fa-language"></i> Português (nativo) · Inglês (intermediário+ imersão)
-              · Espanhol (básico/voluntariado)</div>
-            <div class="dado-item"><i class="fas fa-heart"></i> Voluntariado, jogos, UI/UX</div>
+          </div>
+
+          <div class="sobre-dados reveal-on-scroll">
+            <div class="dado-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Cajamar - SP</span>
+              <div class="hover-glow"></div>
+            </div>
+            <div class="dado-item">
+              <i class="fas fa-language"></i>
+              <span>Português (nativo) · Inglês (intermediário+) · Espanhol (básico)</span>
+              <div class="hover-glow"></div>
+            </div>
+            <div class="dado-item">
+              <i class="fas fa-heart"></i>
+              <span>Voluntariado, jogos, UI/UX</span>
+              <div class="hover-glow"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -95,7 +142,10 @@
     <!-- TECH STACK -->
     <section class="tech">
       <div class="container">
-        <h2 class="section-title">Tech Stack</h2>
+        <h2 class="section-title">
+          Tech Stack
+          <div class="title-underline"></div>
+        </h2>
         <div class="tech-grid">
           <div class="tech-cat">
             <h3>Front-end</h3>
@@ -126,12 +176,17 @@
     <!-- PROJETOS -->
     <section id="projetos" class="projetos">
       <div class="container">
-        <h2 class="section-title">Projetos em destaque</h2>
+        <h2 class="section-title">
+          Projetos em destaque
+          <div class="title-underline"></div>
+        </h2>
         <div class="projetos-grid">
-          <!-- Card 1: Pokedex -->
+          <!-- 1 - Pokedex -->
           <div class="card-projeto">
-            <div class="card-img"><i class="fas fa-gamepad"></i></div>
-            <h3>Pokedex Interativa</h3>
+            <div class="project-image">
+              <img src="assets/img/projects/pokemon.png" alt="Pokedex Interativa - screenshot" class="project-thumb">
+            </div>
+            <h3><i class="fas fa-gamepad"></i> Pokedex Interativa</h3>
             <div class="card-tech">Vue.js · localStorage · API REST</div>
             <p>Escolha 3 pokémons, monte seu time e batalhe contra um oponente aleatório – sistema de vantagens por
               tipo.</p>
@@ -140,11 +195,14 @@
               <a href="https://github.com/isrique9/pokeapp" target="_blank">GitHub</a>
             </div>
           </div>
-          <!-- Card 2: Dashboard de Votação (Prefeitura) -->
+          <!-- 2 - Clima Agora -->
           <div class="card-projeto">
-            <div class="card-img"><i class="fa-solid fa-cloud-sun"></i></div>
-            <h3>Clima Agora</h3>
-            <div class="card-tech">Vue.js · Vite · Chart.js · Leaflet · Open-Meteo API · Nominatim</div>
+            <div class="project-image">
+              <img src="assets/img/projects/clima_bom.png" alt="Clima Agora - previsão interativa"
+                class="project-thumb">
+            </div>
+            <h3><i class="fa-solid fa-cloud-sun"></i> Clima Agora</h3>
+            <div class="card-tech">Vue.js · Vite · Chart.js · Leaflet</div>
             <p>Aplicativo web de clima interativo, com dados em tempo real, gráficos, mapa e efeitos visuais dinâmicos,
               feito em Vue 3.</p>
             <div class="card-links">
@@ -152,10 +210,12 @@
               <a href="https://github.com/isrique9/weather-explorer" target="_blank">GitHub</a>
             </div>
           </div>
-          <!-- Card 3: Lista de Filmes -->
+          <!-- 3 - Lista de Filmes -->
           <div class="card-projeto">
-            <div class="card-img"><i class="fas fa-film"></i></div>
-            <h3>Lista de Filmes</h3>
+            <div class="project-image">
+              <img src="assets/img/projects/lista_filmes.png" alt="Lista de Filmes - watchlist" class="project-thumb">
+            </div>
+            <h3><i class="fas fa-film"></i> Lista de Filmes</h3>
             <div class="card-tech">Vue 3 · Vite · LocalStorage</div>
             <p>Watchlist para favoritar filmes, com persistência e roteamento simples.</p>
             <div class="card-links">
@@ -163,24 +223,28 @@
               <a href="https://github.com/isrique9/lista-de-films" target="_blank">GitHub</a>
             </div>
           </div>
-          <!-- Card 4: EcoDelivery -->
+          <!-- 4 - EcoDelivery -->
           <div class="card-projeto">
-            <div class="card-img"><i class="fas fa-leaf"></i></div>
-            <h3>EcoDelivery</h3>
+            <div class="project-image">
+              <img src="assets/img/projects/eco_delivery.png" alt="EcoDelivery - conceito sustentável"
+                class="project-thumb">
+            </div>
+            <h3><i class="fas fa-leaf"></i> EcoDelivery</h3>
             <div class="card-tech">Figma · UX/UI · Design Psychology</div>
             <p>App conceito para delivery sustentável, com foco em usabilidade e psicologia das cores.</p>
             <div class="card-links">
-              <a href="https://www.figma.com/design/ohiM4ka4a1v8VDWN7uiMFN/EcoDelivery" target="_blank">Figma →</a>
+              <a href="https://www.figma.com/design/oihM4ka4a1v8VDWN7uiMFN/EcoDelivey?t=AS3TganA66dxSPNV-0"
+                target="_blank">Figma →</a>
             </div>
           </div>
-          <!-- Card 5: SmartCajamar -->
+          <!-- 5 - Smart Cajamar -->
           <div class="card-projeto">
-            <div class="card-img"><i class="fa-solid fa-city"></i></div>
-            <h3>Landing Page Smart Cajamar</h3>
+            <div class="project-image">
+              <img src="assets/img/projects/smart_cajamar.png" alt="Landing Page Smart Cajamar" class="project-thumb">
+            </div>
+            <h3><i class="fa-solid fa-city"></i> Landing Page Smart Cajamar</h3>
             <div class="card-tech">PHP · HTML5 · CSS3 · JavaScript</div>
-            <p>Landing Page usado como o portal oficial do programa, servindo tanto para transparência pública
-              quanto para a adesão da comunidade
-              ao sistema de segurança.</p>
+            <p>Landing Page oficial do programa, promovendo transparência e engajamento comunitário no sistema.</p>
             <div class="card-links">
               <a href="https://smart.cajamar.sp.gov.br/" target="_blank">Live →</a>
             </div>
@@ -192,7 +256,10 @@
     <!-- EXPERIÊNCIA PROFISSIONAL -->
     <section class="experiencia">
       <div class="container">
-        <h2 class="section-title">Experiência</h2>
+        <h2 class="section-title">
+          Experiência
+          <div class="title-underline"></div>
+        </h2>
         <div class="exp-card">
           <h3>Front-end Developer · Prefeitura Municipal de Cajamar (A2W Tecnologia)</h3>
           <span class="exp-data">03/2025 – Presente</span>
@@ -213,7 +280,10 @@
     <!-- VOLUNTARIADO -->
     <section class="voluntariado">
       <div class="container">
-        <h2 class="section-title">Voluntariado & Impacto</h2>
+        <h2 class="section-title">
+          Voluntariado & Impacto
+          <div class="title-underline"></div>
+        </h2>
         <div class="vol-grid">
           <div class="vol-card">
             <i class="fas fa-tree"></i>
@@ -234,7 +304,10 @@
     <!-- CONTATO -->
     <section id="contato" class="contato">
       <div class="container">
-        <h2 class="section-title">Vamos criar algo juntos?</h2>
+        <h2 class="section-title">
+          Vamos criar algo juntos?
+          <div class="title-underline"></div>
+        </h2>
         <div class="contato-wrapper">
           <div class="contato-info">
             <p><i class="fas fa-envelope"></i> henriqueisrael790@gmail.com</p>
@@ -265,7 +338,6 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-
   <script src="assets/js/index.js"></script>
 </body>
 
