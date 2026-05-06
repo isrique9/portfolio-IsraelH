@@ -108,13 +108,19 @@
 }
 
 .btn-secondary {
-  background: transparent;
+  background: linear-gradient(to right, var(--color-primary) 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
   border: 1px solid var(--color-primary);
   color: var(--color-primary);
+  transition: all 0.3s ease-out;
 }
 
 .btn-secondary:hover {
-  background: var(--btn-secondary-bg);
+  background-position: left bottom;
+  color: white;
+  border-color: var(--color-primary);
+  /* mantém a cor da borda */
 }
 
 .social-links {
