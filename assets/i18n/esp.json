@@ -1,0 +1,173 @@
+{
+  "Details": {
+    "Results": [
+      {
+        "Id": 1,
+        "Text": {
+          "Header": {
+            "Logo": "IH.",
+            "NavItems": [
+              "Inicio",
+              "Sobre mí",
+              "Proyectos",
+              "Contacto"
+            ],
+            "CvButton": "Currículo PDF"
+          },
+          "Welcome": {
+            "Badge": "Desarrollador Front-end",
+            "Heading": "Hola, soy <span class=\"gradiente\"> Israel Henrique",
+            "Paragraph": "Creo interfaces que combinan diseño, usabilidad y lógica. Actualmente transformando la experiencia digital en la Alcaldía de Cajamar.",
+            "PrimaryButton": "Ver proyectos",
+            "SecondaryButton": "Hablemos",
+            "SocialLinks": [
+              "LinkedIn",
+              "GitHub",
+              "Instagram",
+              "Facebook"
+            ]
+          },
+          "AboutMe": {
+            "Title": "Sobre mí",
+            "HighlightPhrase": [
+              "Transformo ideas en interfaces funcionales.",
+              "Código limpio, diseño cuidado y rendimiento.",
+              "Apasionado por Vue.js y las buenas experiencias."
+            ],
+            "Description": "Soy desarrollador front-end apasionado por la tecnología y el diseño. Actualmente curso Tecnología en Sistemas de Información en UNORTE (graduación en 2028) y tengo formación técnica en Administración por ETEC.",
+            "SoftSkills": {
+              "Title": "Soft skills",
+              "Skills": [
+                "Adaptabilidad",
+                "Resiliencia / Trabajo bajo presión",
+                "Aprendizaje rápido",
+                "Trabajo en equipo"
+              ]
+            },
+            "InfoItems": [
+              "Cajamar - SP",
+              "Portugués (nativo) · Inglés (intermedio+) · Español (básico)"
+            ]
+          },
+          "TechStack": {
+            "Title": "Tech Stack",
+            "Categories": [
+              {
+                "Name": "Front-end",
+                "Technologies": [
+                  "HTML5",
+                  "CSS3",
+                  "JavaScript",
+                  "Vue.js",
+                  "Bootstrap"
+                ]
+              },
+              {
+                "Name": "Back-end y Herramientas",
+                "Technologies": [
+                  "Python",
+                  "Flask",
+                  "FastAPI",
+                  "Streamlit",
+                  "C# / .NET",
+                  "Git/GitHub"
+                ]
+              }
+            ]
+          },
+          "Projects": {
+            "Title": "Proyectos destacados",
+            "List": [
+              {
+                "Name": "Pokedex Interactiva",
+                "Tech": "Vue.js · localStorage · API REST",
+                "Description": "Elige 3 Pokémon, arma tu equipo y lucha contra un oponente aleatorio – sistema de ventajas por tipo.",
+                "Links": [
+                  "Demo",
+                  "GitHub"
+                ]
+              },
+              {
+                "Name": "Clima Ahora",
+                "Tech": "Vue.js · Vite · Chart.js · Leaflet",
+                "Description": "App de clima interactiva con datos en tiempo real, gráficos, mapa y efectos visuales dinámicos.",
+                "Links": [
+                  "Demo",
+                  "GitHub"
+                ]
+              },
+              {
+                "Name": "Lista de Películas",
+                "Tech": "Vue 3 · Vite · LocalStorage",
+                "Description": "Lista de seguimiento para marcar películas favoritas con persistencia y enrutamiento simple.",
+                "Links": [
+                  "Demo",
+                  "GitHub"
+                ]
+              },
+              {
+                "Name": "EcoDelivery",
+                "Tech": "Figma · UX/UI · Psicología del diseño",
+                "Description": "App concepto para delivery sostenible, enfocado en usabilidad y psicología del color.",
+                "Links": [
+                  "Figma"
+                ]
+              },
+              {
+                "Name": "Smart Cajamar",
+                "Tech": "PHP · HTML5 · CSS3 · JavaScript",
+                "Description": "Landing Page oficial del programa, promoviendo transparencia y participación comunitaria.",
+                "Links": [
+                  "Demo"
+                ]
+              }
+            ]
+          },
+          "Experience": {
+            "Title": "Experiencia profesional",
+            "JobTitle": "Desarrollador Front-end · Alcaldía de Cajamar (A2W Tecnología)",
+            "Date": "03/2025 – Actualidad",
+            "Responsibilities": [
+              "Dashboard de votación (Streamlit) para el evento 'Degusta Cajamar' con actualización en tiempo real.",
+              "Sistema de adopción de mascotas con Flask + Flask WTF integrado con ONGs locales.",
+              "Panel administrativo para piscinas públicas (PHP) con exportación PDF e impresión de carnets.",
+              "Refactorización de la página 'Smart Cajamar' con efectos visuales modernos y formulario de adhesión.",
+              "Formulario de exención del IPTU con Vue.js e interfaz de votación online para IPSSC (FastAPI + Jinja2)."
+            ]
+          },
+          "Graduations": {
+            "Title": "Formación académica",
+            "Items": [
+              {
+                "Degree": "Tecnología en Sistemas de Información",
+                "Institution": "UNORTE - Centro Universitario del Norte de São Paulo",
+                "Period": "02/2026 – 02/2028 (Previsión)"
+              },
+              {
+                "Degree": "Técnico en Administración",
+                "Institution": "ETEC Gino Rezaghi",
+                "Period": "02/2021 – 12/2023 (Completado)"
+              }
+            ]
+          },
+          "Contact": {
+            "Title": "¿Creamos algo juntos?",
+            "Email": "henriqueisrael790@gmail.com",
+            "Phone": "(11) 98102-8060",
+            "SocialLinks": [
+              "LinkedIn",
+              "GitHub"
+            ],
+            "Form": {
+              "NamePlaceholder": "Tu nombre",
+              "EmailPlaceholder": "Tu correo",
+              "MessagePlaceholder": "Tu mensaje",
+              "SubmitButton": "Enviar"
+            }
+          },
+          "Footer": "© {year} Israel Henrique"
+        }
+      }
+    ]
+  }
+}

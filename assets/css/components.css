@@ -37,3 +37,96 @@ nav ul li a::after {
 nav ul li a:hover::after {
   width: 100%;
 }
+
+/* Novo seletor personalizado com bandeiras */
+.custom-lang-wrapper {
+  position: relative;
+  margin-left: 1rem;
+}
+
+.custom-lang-switcher {
+  position: relative;
+  cursor: pointer;
+}
+
+.lang-selected {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  padding: 0.4rem 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.lang-selected:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lang-selected .selected-flag {
+  width: 22px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.lang-selected i {
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  transition: transform 0.2s;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0;
+  margin: 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 100;
+  min-width: 140px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.custom-lang-switcher.open .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.custom-lang-switcher.open .lang-selected i {
+  transform: rotate(180deg);
+}
+
+.lang-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  color: var(--text-primary);
+}
+
+.lang-dropdown li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-dropdown img {
+  width: 22px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.lang-dropdown span {
+  font-size: 0.9rem;
+}

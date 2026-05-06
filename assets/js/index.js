@@ -130,49 +130,76 @@ if (logo) {
   window.addEventListener('beforeunload', () => animationId && cancelAnimationFrame(animationId));
 })();
 
-// Efeitos da seção Sobre
-document.addEventListener('DOMContentLoaded', () => {
-  // Typewriter
-  const typewriterElement = document.getElementById('typewriter-text');
-  if (typewriterElement) {
-    const phrases = [
-      '"Criar é resolver problemas com propósito."',
-      '"Design que conecta, código que transforma."',
-      '"Ideias viram impacto quando ganham forma."',
-      '"Tecnologia é poesia escrita em lógica."',
-      '"Cada linha de código é um traço de futuro."',
-    ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let currentText = '';
+// ===================== TYPEWRITER (MODIFICADO PARA SUPORTAR TRADUÇÃO) =====================
+let typewriterTimeout = null;      // Armazena o setTimeout atual
+let typewriterIsActive = true;     // Controla se deve continuar animando
 
-    function typeEffect() {
-      const fullText = phrases[phraseIndex];
-      if (isDeleting) {
-        currentText = fullText.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        currentText = fullText.substring(0, charIndex + 1);
-        charIndex++;
-      }
-      typewriterElement.textContent = currentText;
-      if (!isDeleting && charIndex === fullText.length) {
-        isDeleting = true;
-        setTimeout(typeEffect, 2000);
-        return;
-      }
-      if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        setTimeout(typeEffect, 300);
-        return;
-      }
-      const speed = isDeleting ? 50 : 100;
-      setTimeout(typeEffect, speed);
-    }
-    typeEffect();
+function startTypewriter(phrases) {
+  // Limpa qualquer animação anterior
+  if (typewriterTimeout) {
+    clearTimeout(typewriterTimeout);
+    typewriterTimeout = null;
   }
+
+  const typewriterElement = document.getElementById('typewriter-text');
+  if (!typewriterElement || !phrases || phrases.length === 0) return;
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeEffect() {
+    if (!typewriterIsActive) return;
+    const fullText = phrases[phraseIndex];
+    let currentText;
+
+    if (isDeleting) {
+      currentText = fullText.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      currentText = fullText.substring(0, charIndex + 1);
+      charIndex++;
+    }
+    typewriterElement.textContent = currentText;
+
+    if (!isDeleting && charIndex === fullText.length) {
+      isDeleting = true;
+      typewriterTimeout = setTimeout(typeEffect, 2000);
+      return;
+    }
+    if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typewriterTimeout = setTimeout(typeEffect, 300);
+      return;
+    }
+    const speed = isDeleting ? 50 : 100;
+    typewriterTimeout = setTimeout(typeEffect, speed);
+  }
+
+  typeEffect();
+}
+
+// Função global para ser chamada pelo i18n.js quando o idioma mudar
+window.updateTypewriterPhrases = function (newPhrases) {
+  if (newPhrases && Array.isArray(newPhrases) && newPhrases.length > 0) {
+    startTypewriter(newPhrases);
+  }
+};
+
+// ===================== FIM TYPEWRITER =====================
+
+// Efeitos da seção Sobre (sem typewriter, já tratado acima)
+document.addEventListener('DOMContentLoaded', () => {
+  // INICIALIZA O TYPEWRITER COM AS FRASES PADRÃO (PORTUGUÊS)
+  const defaultPhrases = [
+    '"Criar é resolver problemas com propósito."',
+    '"Design que conecta, código que transforma."',
+    '"Ideias viram impacto quando ganham forma."',
+    '"Tecnologia é poesia escrita em lógica."',
+    '"Cada linha de código é um traço de futuro."',
+  ];
+  startTypewriter(defaultPhrases);
 
   // Reveal on scroll e animação das barras de progresso
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
