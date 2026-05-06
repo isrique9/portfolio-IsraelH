@@ -31,7 +31,6 @@ const i18nConfig = {
     // Info itens
     { selector: '#sobre .dado-item span', key: 'AboutMe.InfoItems[0]', index: 0 },
     { selector: '#sobre .dado-item span', key: 'AboutMe.InfoItems[1]', index: 1 },
-    { selector: '#sobre .dado-item span', key: 'AboutMe.InfoItems[2]', index: 2 },
     // Tech stack
     { selector: '.tech .section-title span', key: 'TechStack.Title' },
     { selector: '.tech-cat:first-child h3', key: 'TechStack.Categories[0].Name' },
