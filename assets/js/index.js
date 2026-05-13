@@ -447,3 +447,59 @@ if (form) {
     }
   });
 }
+
+// ===================== TEMA CLARO/ESCURO =====================
+function initTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    updateThemeIcon('light');
+  } else if (savedTheme === 'dark') {
+    document.body.classList.remove('light-theme');
+    updateThemeIcon('dark');
+  } else {
+    // Se nunca salvou, usa o que o navegador preferir
+    if (prefersDark) {
+      document.body.classList.remove('light-theme');
+      updateThemeIcon('dark');
+    } else {
+      document.body.classList.add('light-theme');
+      updateThemeIcon('light');
+    }
+  }
+}
+
+function updateThemeIcon(theme) {
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (!toggleBtn) return;
+  const icon = toggleBtn.querySelector('i');
+  if (theme === 'light') {
+    icon.className = 'fas fa-sun'; // ícone de sol para claro
+  } else {
+    icon.className = 'fas fa-moon'; // ícone de lua para escuro
+  }
+}
+
+function toggleTheme() {
+  const isLight = document.body.classList.contains('light-theme');
+  if (isLight) {
+    document.body.classList.remove('light-theme');
+    localStorage.setItem('theme', 'dark');
+    updateThemeIcon('dark');
+  } else {
+    document.body.classList.add('light-theme');
+    localStorage.setItem('theme', 'light');
+    updateThemeIcon('light');
+  }
+}
+
+// Aguarda o DOM carregar para adicionar o evento
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', toggleTheme);
+  }
+});

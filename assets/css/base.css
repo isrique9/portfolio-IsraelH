@@ -16,7 +16,35 @@
   --btn-secondary-bg: #252e3b;
   --btn-secondary-hover: #354153;
 
+  --highlight-phrase: rgba(245, 166, 35, 0.08);
+
   --white: #ffffff;
+  --text-color: #ffffff;
+}
+
+/* MODO CLARO - ativado pela classe .light-theme no body */
+.light-theme {
+  --bg-primary: #f0ede8;
+  --bg-secondary: #e6e3dc;
+  --bg-tertiary: #e2e2e2;
+  --bg-input: #f0ede8;
+
+  --text-primary: #0f1217;
+  --text-secondary: #222a36;
+  --text-muted: #3a3f4a;
+
+  --color-primary: #0a59dc;
+  --color-primary-dark: #0c4ab5;
+  --color-secondary: #0078bb;
+
+  --border-color: #cdc9c0;
+  --btn-secondary-bg: #c4cdd4;
+  --btn-secondary-hover: #a6b3c4;
+
+  --highlight-phrase: rgba(35, 84, 245, 0.08);
+
+  --white: #ffffff;
+  --text-color: #000000;
 }
 
 * {
@@ -33,6 +61,7 @@ body {
   scroll-behavior: smooth;
 }
 
+/* o resto do seu CSS continua igual */
 .container {
   max-width: 1200px;
   margin: 0 auto;
