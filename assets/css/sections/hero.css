@@ -70,7 +70,7 @@
 }
 
 .gradiente {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-gd));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -121,7 +121,6 @@
   background-position: left bottom;
   color: white;
   border-color: var(--color-primary);
-  /* mantém a cor da borda */
 }
 
 .social-links {
@@ -139,6 +138,7 @@
   color: var(--color-primary);
 }
 
+/* Variáveis para as cores da borda animada do avatar */
 .avatar-placeholder {
   width: 300px;
   height: 300px;
@@ -147,16 +147,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* Usa variáveis CSS que mudam conforme o tema */
+  --shadow-start: rgba(255, 174, 0, 0.7);
+  --shadow-end: rgba(255, 77, 23, 0.9);
+  --glow-start: rgba(255, 123, 0, 0.3);
+  --glow-end: rgba(255, 196, 0, 0.7);
   animation: borderPulse 2s infinite alternate;
+}
+
+/* Tema claro: sobrescreve as variáveis com as cores azuis */
+.light-theme .avatar-placeholder {
+  --shadow-start: rgba(10, 89, 220, 0.7);
+  --shadow-end: rgba(0, 120, 187, 0.9);
+  --glow-start: rgba(58, 130, 247, 0.3);
+  --glow-end: rgba(44, 143, 217, 0.7);
 }
 
 @keyframes borderPulse {
   0% {
-    box-shadow: 0 0 0 3px rgba(255, 174, 0, 0.7), 0 0 10px rgba(255, 123, 0, 0.3);
+    box-shadow: 0 0 0 3px var(--shadow-start), 0 0 10px var(--glow-start);
   }
 
   100% {
-    box-shadow: 0 0 0 3px rgba(255, 77, 23, 0.9), 0 0 20px rgba(255, 196, 0, 0.7);
+    box-shadow: 0 0 0 3px var(--shadow-end), 0 0 20px var(--glow-end);
   }
 }
 
@@ -165,6 +178,26 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.hero-avatar img {
+  transition: opacity 0.25s ease;
+}
+
+.avatar-placeholder {
+  transition: box-shadow 0.3s ease;
+}
+
+.avatar-placeholder img {
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1), filter 0.25s ease;
+  will-change: transform, opacity, filter;
+}
+
+/* Classe aplicada durante a troca de tema */
+.avatar-placeholder.theme-transition img {
+  transform: scale(0.94);
+  filter: blur(2px);
+  opacity: 0.4;
 }
 
 /* ========== RESPONSIVO: MOBILE ========== */
@@ -190,7 +223,6 @@
     justify-content: center;
   }
 
-  /* Mantém grid para outras seções */
   .sobre-grid,
   .contato-wrapper {
     grid-template-columns: 1fr;

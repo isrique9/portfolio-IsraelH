@@ -11,6 +11,7 @@
   --color-primary: #f5a623;
   --color-primary-dark: #e0951a;
   --color-secondary: #ff8744;
+  --color-secondary-gd: #f87026;
 
   --border-color: #3a3f4a;
   --btn-secondary-bg: #252e3b;
@@ -35,7 +36,8 @@
 
   --color-primary: #0a59dc;
   --color-primary-dark: #0c4ab5;
-  --color-secondary: #0078bb;
+  --color-secondary: #349cd4;
+  --color-secondary-gd: #16bb00;
 
   --border-color: #cdc9c0;
   --btn-secondary-bg: #c4cdd4;
@@ -66,6 +68,37 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
+}
+
+/* Transição suave para troca de tema */
+body,
+header,
+.container,
+.card-projeto,
+.exp-card,
+.contato-form input,
+.contato-form textarea,
+.contato-form button,
+.social-links a,
+.tech-cat,
+.edu-card-single,
+.highlight-phrase,
+.avatar-placeholder,
+.skill-progress,
+.btn-primary,
+.btn-secondary,
+.btn-cv,
+.theme-toggle,
+.custom-lang-switcher {
+  transition: background-color 0.3s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    fill 0.2s ease;
+}
+
+.hero-canvas {
+  transition: opacity 0.2s ease;
 }
 
 @media (max-width: 768px) {
@@ -111,7 +144,8 @@ body {
 
   .avatar-placeholder {
     animation: none;
-    box-shadow: 0 0 0 3px rgba(255, 174, 0, 0.7);
+    /* Usa variáveis para manter coerência com o tema */
+    box-shadow: 0 0 0 3px var(--shadow-start, rgba(255, 174, 0, 0.7));
   }
 
   .skill-progress {

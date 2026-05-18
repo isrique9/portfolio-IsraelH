@@ -19,7 +19,7 @@ if (logo) {
   });
 }
 
-// FUNDO ANIMADO COM PARTÍCULAS
+// FUNDO ANIMADO COM PARTÍCULAS - VERSÃO COM SUPORTE A TEMA CLARO/ESCURO
 (function initAnimatedBackground() {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
@@ -29,19 +29,39 @@ if (logo) {
   let height = window.innerHeight;
   let particles = [];
   let animationId = null;
+  let currentConnectionColor = 'rgba(245, 166, 35, 0.12)'; // valor padrão (escuro)
 
   const PARTICLE_COUNT = 75;
-  const COLORS = ['#f5a623', '#ff8744', '#f0b27a', '#e67e22', '#f39c12'];
   const MAX_RADIUS = 3.5;
   const MIN_RADIUS = 1.2;
   const MAX_SPEED = 0.45;
   const MIN_SPEED = 0.12;
 
+  // Paletas de cores conforme o tema
+  const COLOR_PALETTES = {
+    dark: ['#f5a623', '#ff8744', '#f0b27a', '#e67e22', '#f39c12'],
+    light: ['#0a59dc', '#3a82f7', '#5a9eff', '#0078bb', '#2c8fd9']
+  };
+
+  function getCurrentThemePalette() {
+    const isLight = document.body.classList.contains('light-theme');
+    return isLight ? COLOR_PALETTES.light : COLOR_PALETTES.dark;
+  }
+
+  function updateConnectionColor() {
+    const isLight = document.body.classList.contains('light-theme');
+    if (isLight) {
+      currentConnectionColor = 'rgba(10, 89, 220, 0.12)';
+    } else {
+      currentConnectionColor = 'rgba(245, 166, 35, 0.12)';
+    }
+  }
+
   function random(min, max) {
     return min + Math.random() * (max - min);
   }
 
-  function initParticles(w, h) {
+  function initParticles(w, h, palette) {
     const newParticles = [];
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       newParticles.push({
@@ -51,10 +71,19 @@ if (logo) {
         speedX: random(-MAX_SPEED, MAX_SPEED),
         speedY: random(-MAX_SPEED, MAX_SPEED),
         alpha: random(0.25, 0.85),
-        color: COLORS[Math.floor(Math.random() * COLORS.length)]
+        color: palette[Math.floor(Math.random() * palette.length)]
       });
     }
     return newParticles;
+  }
+
+  // Atualiza as cores das partículas existentes conforme o tema atual
+  function updateParticleColors() {
+    const palette = getCurrentThemePalette();
+    for (let p of particles) {
+      p.color = palette[Math.floor(Math.random() * palette.length)];
+    }
+    updateConnectionColor();
   }
 
   function updateParticles(particlesArr, w, h) {
@@ -97,7 +126,7 @@ if (logo) {
           ctx.beginPath();
           ctx.moveTo(particlesArr[i].x, particlesArr[i].y);
           ctx.lineTo(particlesArr[j].x, particlesArr[j].y);
-          ctx.strokeStyle = `rgba(245, 166, 35, ${0.12 * (1 - distance / 95)})`;
+          ctx.strokeStyle = currentConnectionColor;
           ctx.lineWidth = 0.6;
           ctx.stroke();
         }
@@ -111,7 +140,9 @@ if (logo) {
     height = window.innerHeight;
     canvas.width = width;
     canvas.height = height;
-    particles = initParticles(width, height);
+    const palette = getCurrentThemePalette();
+    particles = initParticles(width, height, palette);
+    updateConnectionColor();
   }
 
   function animate() {
@@ -126,7 +157,19 @@ if (logo) {
     animate();
     window.addEventListener('resize', () => resizeCanvas());
   }
+
   if (canvas.getContext) setup();
+
+  // Expor função para atualizar cores quando o tema mudar
+  window.updateCanvasTheme = function () {
+    if (particles && particles.length) {
+      updateParticleColors();
+    } else {
+      // Se as partículas ainda não foram inicializadas, apenas atualiza a cor da linha
+      updateConnectionColor();
+    }
+  };
+
   window.addEventListener('beforeunload', () => animationId && cancelAnimationFrame(animationId));
 })();
 
@@ -468,6 +511,18 @@ function initTheme() {
       document.body.classList.add('light-theme');
       updateThemeIcon('light');
     }
+
+    updateAvatarByTheme();   // <-- adicione esta linha
+
+    if (window.updateCanvasTheme) {
+      window.updateCanvasTheme();
+    }
+
+  }
+
+  // Atualiza as cores das partículas conforme o tema inicial
+  if (window.updateCanvasTheme) {
+    window.updateCanvasTheme();
   }
 }
 
@@ -482,17 +537,67 @@ function updateThemeIcon(theme) {
   }
 }
 
-function toggleTheme() {
+let avatarTransitionTimer = null;
+
+function updateAvatarByTheme() {
+  const avatarContainer = document.querySelector('.hero-avatar .avatar-placeholder');
+  const avatarImg = avatarContainer?.querySelector('img');
+  if (!avatarImg || !avatarContainer) return;
+
   const isLight = document.body.classList.contains('light-theme');
-  if (isLight) {
-    document.body.classList.remove('light-theme');
-    localStorage.setItem('theme', 'dark');
-    updateThemeIcon('dark');
-  } else {
-    document.body.classList.add('light-theme');
-    localStorage.setItem('theme', 'light');
-    updateThemeIcon('light');
+  const newSrc = isLight ? 'assets/img/Me_freeze.png' : 'assets/img/Me.jpeg';
+
+  if (avatarImg.src.includes(newSrc)) return;
+
+  if (avatarTransitionTimer) clearTimeout(avatarTransitionTimer);
+
+  avatarContainer.classList.add('theme-transition');
+
+  setTimeout(() => {
+    avatarImg.src = newSrc;
+
+    avatarTransitionTimer = setTimeout(() => {
+      avatarContainer.classList.remove('theme-transition');
+      avatarTransitionTimer = null;
+    }, 200);
+  }, 80);
+}
+
+function toggleTheme() {
+  smoothThemeTransition(() => {
+    const isLight = document.body.classList.contains('light-theme');
+    if (isLight) {
+      document.body.classList.remove('light-theme');
+      localStorage.setItem('theme', 'dark');
+      updateThemeIcon('dark');
+    } else {
+      document.body.classList.add('light-theme');
+      localStorage.setItem('theme', 'light');
+      updateThemeIcon('light');
+    }
+    updateAvatarByTheme();
+    if (window.updateCanvasTheme) {
+      window.updateCanvasTheme();
+    }
+  });
+}
+function smoothThemeTransition(callback) {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) {
+    callback();
+    return;
   }
+  canvas.style.transition = 'opacity 0.2s ease';
+  canvas.style.opacity = '0';
+  setTimeout(() => {
+    callback(); // aplica a troca de tema e atualiza as cores
+    setTimeout(() => {
+      canvas.style.opacity = '1';
+      setTimeout(() => {
+        canvas.style.transition = '';
+      }, 200);
+    }, 50);
+  }, 150);
 }
 
 // Aguarda o DOM carregar para adicionar o evento

@@ -53,17 +53,18 @@ nav a:hover {
 }
 
 .btn-cv {
-  background: var(--btn-secondary-bg);
+  background: var(--color-primary);
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   text-decoration: none;
-  color: var(--text-primary);
+  color: white;
   font-size: 0.9rem;
   font-weight: 500;
+  transition: background 0.3s ease;
 }
 
 .btn-cv:hover {
-  background: var(--btn-secondary-hover);
+  background: var(--color-secondary);
 }
 
 footer {
