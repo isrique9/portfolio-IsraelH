@@ -50,9 +50,7 @@ const i18nConfig = {
     { selector: '.contato-form input[placeholder="Seu nome"]', key: 'Contact.Form.NamePlaceholder', attr: 'placeholder' },
     { selector: '.contato-form input[placeholder="Seu e-mail"]', key: 'Contact.Form.EmailPlaceholder', attr: 'placeholder' },
     { selector: '.contato-form textarea', key: 'Contact.Form.MessagePlaceholder', attr: 'placeholder' },
-    { selector: '.contato-form button', key: 'Contact.Form.SubmitButton' },
-    // Footer
-    { selector: 'footer p', key: 'Footer', isDynamic: true }
+    { selector: '.contato-form button', key: 'Contact.Form.SubmitButton' }
   ]
 };
 

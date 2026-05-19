@@ -67,10 +67,88 @@ nav a:hover {
   background: var(--color-secondary);
 }
 
+/* ========== FOOTER COM SINCROMIA GRADIENTE ========== */
 footer {
+  background: var(--bg-secondary);
+  border-top: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradiente compartilhado (linha + texto) */
+.footer-divider {
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent,
+      var(--color-primary),
+      var(--color-secondary),
+      var(--color-primary),
+      transparent);
+  background-size: 200% 100%;
+  animation: slideGradient 4s linear infinite;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.footer-content {
   text-align: center;
-  padding: 1.5rem;
-  border-top: 1px solid var(--btn-secondary-bg);
-  margin-top: 2rem;
-  font-size: 0.9rem;
+  padding: 0.5rem 0 1.5rem;
+}
+
+.footer-copy {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  /* Mesmo gradiente, mas sem transparent para o texto ficar vibrante */
+  background: linear-gradient(90deg,
+      var(--color-primary),
+      var(--color-secondary),
+      var(--color-primary));
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: slideGradient 4s linear infinite;
+  display: inline-block;
+  transition: filter 0.2s ease;
+}
+
+.footer-copy:hover {
+  filter: drop-shadow(0 0 6px var(--color-primary));
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+  font-family: monospace;
+  letter-spacing: 1px;
+  transition: opacity 0.2s;
+}
+
+.footer-tagline:hover {
+  opacity: 1;
+}
+
+/* Animação única para ambos (sincronizada) */
+@keyframes slideGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+/* Ajuste extra para o tema claro (opcional, pois as variáveis já mudam) */
+.light-theme .footer-copy {
+  /* O gradiente usará as cores primárias do tema claro automaticamente */
+  background: linear-gradient(90deg,
+      var(--color-primary),
+      var(--color-secondary),
+      var(--color-primary));
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
 }

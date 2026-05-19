@@ -608,3 +608,22 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn.addEventListener('click', toggleTheme);
   }
 });
+
+// Scroll to Top Button
+const scrollBtn = document.getElementById('scrollToTopBtn');
+if (scrollBtn) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.add('show');
+    } else {
+      scrollBtn.classList.remove('show');
+    }
+  });
+
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Checa estado inicial
+  if (window.scrollY > 300) scrollBtn.classList.add('show');
+}

@@ -164,8 +164,7 @@
               "MessagePlaceholder": "Tu mensaje",
               "SubmitButton": "Enviar"
             }
-          },
-          "Footer": "© {year} Israel Henrique"
+          }
         }
       }
     ]
