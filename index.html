@@ -95,7 +95,7 @@
       </div>
     </section>
 
-    <!-- SEÇÃO SOBRE (menos ênfase no voluntariado) -->
+    <!-- SEÇÃO SOBRE -->
     <section id="sobre" class="sobre">
       <div class="container">
         <h2 class="section-title">
@@ -166,29 +166,52 @@
     <section class="tech">
       <div class="container">
         <h2 class="section-title">
-          <span></span>
+          <span>Tech Stack & Skills</span>
           <div class="title-underline"></div>
         </h2>
-        <div class="tech-grid">
-          <div class="tech-cat">
-            <h3></h3>
+        <div class="tech-grid-enhanced">
+          <!-- Front-end -->
+          <div class="tech-cat-card">
+            <div class="tech-cat-header">
+              <i class="fas fa-code"></i>
+              <h3>Front‑end</h3>
+            </div>
             <div class="tech-icons">
               <span><i class="fab fa-html5"></i> HTML5</span>
               <span><i class="fab fa-css3-alt"></i> CSS3</span>
               <span><i class="fab fa-js"></i> JavaScript</span>
               <span><i class="fab fa-vuejs"></i> Vue.js</span>
               <span><i class="fab fa-bootstrap"></i> Bootstrap</span>
+              <span><i class="fas fa-bell"></i> SweetAlert2</span>
             </div>
           </div>
-          <div class="tech-cat">
-            <h3>Back-end & Ferramentas</h3>
+
+          <!-- Back-end & APIs -->
+          <div class="tech-cat-card">
+            <div class="tech-cat-header">
+              <i class="fas fa-server"></i>
+              <h3>Back‑end & APIs</h3>
+            </div>
             <div class="tech-icons">
               <span><i class="fab fa-python"></i> Python</span>
               <span>Flask</span>
               <span>FastAPI</span>
               <span>Streamlit</span>
               <span>C# / .NET</span>
-              <span><i class="fab fa-git-alt"></i> Git/GitHub <i class="fa-solid fa-angle-right"></i></span>
+              <span><i class="fab fa-php"></i> PHP</span>
+            </div>
+          </div>
+
+          <!-- Ferramentas -->
+          <div class="tech-cat-card">
+            <div class="tech-cat-header">
+              <i class="fas fa-tools"></i>
+              <h3>Ferramentas</h3>
+            </div>
+            <div class="tech-icons">
+              <span><i class="fab fa-figma"></i> Figma</span>
+              <span><i class="fab fa-git-alt"></i> Git</span>
+              <span><i class="fa-brands fa-github"></i> GitHub</span>
             </div>
           </div>
         </div>
@@ -203,10 +226,13 @@
           <div class="title-underline"></div>
         </h2>
         <div class="projetos-grid">
+          <!-- Projeto 1: Pokedex -->
           <div class="card-projeto">
-            <div class="project-image">
-              <img src="assets/img/projects/pokemon.png" alt="Pokedex Interativa" class="project-thumb">
-            </div>
+            <a href="https://isrique9.github.io/Pokedex_App/" target="_blank" class="project-image-link">
+              <div class="project-image">
+                <img src="assets/img/projects/pokemon.png" alt="Pokedex Interativa" class="project-thumb">
+              </div>
+            </a>
             <h3><i class="fas fa-gamepad"></i> </h3>
             <div class="card-tech"></div>
             <p></p>
@@ -217,10 +243,14 @@
                   class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
+
+          <!-- Projeto 2: Clima Agora -->
           <div class="card-projeto">
-            <div class="project-image">
-              <img src="assets/img/projects/clima_bom.png" alt="Clima Agora" class="project-thumb">
-            </div>
+            <a href="https://isrique9.github.io/weather-explorer-app/" target="_blank" class="project-image-link">
+              <div class="project-image">
+                <img src="assets/img/projects/clima_bom.png" alt="Clima Agora" class="project-thumb">
+              </div>
+            </a>
             <h3><i class="fa-solid fa-cloud-sun"></i> </h3>
             <div class="card-tech"></div>
             <p></p>
@@ -231,10 +261,14 @@
                   class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
+
+          <!-- Projeto 3: Lista de Filmes -->
           <div class="card-projeto">
-            <div class="project-image">
-              <img src="assets/img/projects/lista_filmes.png" alt="Lista de Filmes" class="project-thumb">
-            </div>
+            <a href="https://isrique9.github.io/lista-de-filmes/#/" target="_blank" class="project-image-link">
+              <div class="project-image">
+                <img src="assets/img/projects/lista_filmes.png" alt="Lista de Filmes" class="project-thumb">
+              </div>
+            </a>
             <h3><i class="fas fa-film"></i> </h3>
             <div class="card-tech"></div>
             <p></p>
@@ -245,10 +279,15 @@
                   class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
+
+          <!-- Projeto 4: EcoDelivery (apenas Figma) -->
           <div class="card-projeto">
-            <div class="project-image">
-              <img src="assets/img/projects/eco_delivery.png" alt="EcoDelivery" class="project-thumb">
-            </div>
+            <a href="https://www.figma.com/design/oihM4ka4a1v8VDWN7uiMFN/EcoDelivey?t=AS3TganA66dxSPNV-0"
+              target="_blank" class="project-image-link">
+              <div class="project-image">
+                <img src="assets/img/projects/eco_delivery.png" alt="EcoDelivery" class="project-thumb">
+              </div>
+            </a>
             <h3><i class="fas fa-leaf"></i> </h3>
             <div class="card-tech"></div>
             <p></p>
@@ -257,10 +296,14 @@
                 target="_blank">Figma <i class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
+
+          <!-- Projeto 5: Smart Cajamar -->
           <div class="card-projeto">
-            <div class="project-image">
-              <img src="assets/img/projects/smart_cajamar.png" alt="Smart Cajamar" class="project-thumb">
-            </div>
+            <a href="https://smart.cajamar.sp.gov.br/" target="_blank" class="project-image-link">
+              <div class="project-image">
+                <img src="assets/img/projects/smart_cajamar.png" alt="Smart Cajamar" class="project-thumb">
+              </div>
+            </a>
             <h3><i class="fa-solid fa-city"></i> </h3>
             <div class="card-tech"></div>
             <p></p>
